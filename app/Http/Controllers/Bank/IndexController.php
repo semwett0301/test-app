@@ -8,8 +8,7 @@ use App\Models\Bank;
 class IndexController extends Controller
 {
     public function __invoke() {
-        $bank = Bank::find(1);
-        dd($bank);
-        return view('welcome');
+        $banks = Bank::all();
+        return view('index', compact('banks'));
     }
 }
