@@ -22,6 +22,7 @@ class BankFactory extends Factory
             "name" => "adsada",
             "inn" => random_int(0, 999999),
             "common_information" => "FDSFSFDS",
+            "general_director" => "fdsafdsafasafas",
             "address" => "dsfsd",
             "mobile_number" => "+7-921-232-12-33"
         ];

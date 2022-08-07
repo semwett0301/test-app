@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('banks', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->integer("inn");
-            $table->text("common_information");
-            $table->string("general_director");
-            $table->string("address");
-            $table->string("mobile_number");
-            $table->timestamps();
+            $table->text("content");
+            $table->string("topic");
 
             $table->softDeletes();
+
+            $table->unsignedBigInteger("bank_id");
+            $table->index('bank_id', 'comment_bank_idx');
+            $table->foreign("bank_id", 'comment_bank_fk')->on("banks")->references('id');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banks');
+        Schema::dropIfExists('comments');
     }
 };

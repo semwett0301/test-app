@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Bank\IndexController;
+use App\Http\Controllers\Bank\ShowController;
 use App\Http\Controllers\Bank\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/banks', IndexController::class)->name('banks.index');
+Route::get('/banks', IndexController::class)->name('banks.banks');
 Route::post('/banks', StoreController::class)->name('banks.store');
+
+Route::get('/banks/{bank}/comments', \App\Http\Controllers\Comment\IndexController::class)->name('banks.comments.show');
+Route::post('/banks/{bank}/comments', \App\Http\Controllers\Comment\StoreController::class)->name('banks.comments.store');
 
 
