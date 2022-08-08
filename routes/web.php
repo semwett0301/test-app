@@ -3,6 +3,8 @@
 use App\Http\Controllers\Bank\IndexController;
 use App\Http\Controllers\Bank\ShowController;
 use App\Http\Controllers\Bank\StoreController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/banks', IndexController::class)->name('banks.banks');
 Route::post('/banks', StoreController::class)->name('banks.store');
 
 Route::get('/banks/{bank}/comments', \App\Http\Controllers\Comment\IndexController::class)->name('banks.comments.show');
 Route::post('/banks/{bank}/comments', \App\Http\Controllers\Comment\StoreController::class)->name('banks.comments.store');
 
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
